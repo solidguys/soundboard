@@ -1,0 +1,76 @@
+
+body {
+    background-color: #020304;
+    color: #fff;
+}
+
+body,
+button {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+    background: transparent;
+    border: none;
+    color: orange;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 2rem;
+    margin-right: .5em;
+    padding: 0;
+    text-align: left;
+    text-decoration: none;
+    transition: transform .3s;
+}
+
+button:hover, button:focus, button:active {
+    -webkit-transform: scale(1.1) rotate(4deg);
+    transform: scale(1.1) rotate(4deg);
+}
+
+button::before {
+    background-color: darkred;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    content: "";
+    display: inline-block;
+    height: .4em;
+    margin-right: .2em;
+    vertical-align: middle;
+    width: .4em;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: normal;
+    text-align: center;
+    margin: 1em 0 0;
+}
+
+#wrapper {
+    margin: auto;
+    max-width: 60em;
+}
+
+#info {
+    background-color: #0dcaf0;
+    border-radius: .25em;
+    color: #242424;
+    margin: 1em 0;
+    padding: .5em;
+}
+
+#info svg {
+    vertical-align: middle;
+}
+
+#buttons {
+    line-height: 2;
+    padding: 0 1em;
+}
+
+@media (max-width: 400px) {
+    h1 span {
+        font-size: 1.5rem;
+    }
+}
