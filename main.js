@@ -25,7 +25,7 @@ sounds.forEach(function (sound) {
 });
 
 function getFilename(sound) {
-    return sound.toLowerCase().replace(/[?!]/g, "").replace(/ /g, "-");
+    return sound.toLowerCase().replace(/[?!']/g, "").replace(/ /g, "-");
 }
 
 function playSound(sound) {
