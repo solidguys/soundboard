@@ -1,15 +1,6 @@
 const buttons   = document.getElementById("buttons");
 const audio     = document.getElementById("audio");
 const fragment  = document.createDocumentFragment();
-const colors    = {
-    "Chuck": "#0f5daf",
-    "Eladio": "#4c4091",
-    "Gus": "#65960f",
-    "Hector": "#fa9e2b",
-    "Lalo": "#439ed2",
-    "Mike": "#f00"
-    
-};
 let activeSound = null;
 let timer       = 0;
 let clicked     = false;
@@ -30,21 +21,9 @@ function createItem(sound, person) {
         className: "label",
         innerText: sound
     });
-    const fileName         = getFilename(sound);
+    button.dataset.fileName   = getFilename(sound);
     buttonBackground.style.backgroundColor = colors[person];
-    button.addEventListener("click", function () {
-        if (clicked) {
-            clearTimeout(timer);
-            downloadSound(fileName);
-            clicked = false;
-        } else {
-            clicked = true;
-            timer = setTimeout(function () {
-                playSound(fileName);
-                clicked = false;
-            }, 200);
-        }
-    });
+    button.addEventListener("click", handleButtonClick);
     appendChildren(buttonWrapper, buttonBackground, button);
     appendChildren(item, buttonWrapper, label);
     return item;
@@ -68,6 +47,22 @@ function appendChildren(parent, ...children) {
 
 function getFilename(sound) {
     return sound.toLowerCase().replace(/[?!']/g, "").replace(/ /g, "-");
+}
+
+function handleButtonClick(e) {
+    const fileName = e.target.dataset.fileName;
+
+    if (clicked) {
+        clearTimeout(timer);
+        downloadSound(fileName);
+        clicked = false;
+    } else {
+        clicked = true;
+        timer = setTimeout(function () {
+            playSound(fileName);
+            clicked = false;
+        }, 200);
+    }
 }
 
 function playSound(sound) {
