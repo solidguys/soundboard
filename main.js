@@ -46,7 +46,7 @@ function appendChildren(parent, ...children) {
 }
 
 function getFilename(sound) {
-    return sound.toLowerCase().replace(/[?!']/g, "").replace(/ /g, "-");
+    return sound.toLowerCase().replace(/[?!',]/g, "").replace(/ /g, "-");
 }
 
 function handleButtonClick(e) {
